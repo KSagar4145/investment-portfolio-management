@@ -1,0 +1,56 @@
+# Eclipse/STS IDE files
+.vscode/
+.idea/
+*.project
+*.classpath
+*.settings/
+.springBeans
+
+# Gradle
+.gradle/
+build/
+
+# Maven
+target/*
+
+# Spring Boot specific files
+*.log
+*.jar
+*.war
+
+# IntelliJ IDEA
+*.iml
+*.iws
+*.ipr
+
+# OS generated files
+.DS_Store      # macOS
+Thumbs.db      # Windows
+*~             # Linux
+
+# Eclipse
+*.launch
+
+# Gradle Wrapper
+gradle-wrapper.jar
+
+# Temporary files
+*.swp
+*.bak
+*.tmp
+
+*.class
+
+*.cmd
+
+
+*.factorypath
+*.gitattributes
+*.mvn/
+*.md
+mvnw
+
+
+# Spring configuration files (if you're storing sensitive info here)
+#application.properties
+#application.yml
