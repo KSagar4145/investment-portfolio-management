@@ -45,7 +45,7 @@ gradle-wrapper.jar
 
 
 *.factorypath
-*.gitattributes
+#*.gitattributes
 *.mvn/
 *.md
 mvnw

@@ -18,6 +18,8 @@ public class TraderServiceImpl implements ITraderService {
 
 	@Override
 	public Trader createAndSaveTrader(Trader trader) {
+		
+		System.out.println("TraderServiceImpl createAndSaveTrader");
 		return traderRepository.save(trader);
 	}
 
