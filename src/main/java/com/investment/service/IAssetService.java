@@ -19,4 +19,6 @@ public interface IAssetService {
 	// Delete Asset by ID
 	public void deleteAsset(Long assetId) ;
 
+	public List<Asset> saveAssets(List<Asset> assets);
+
 }

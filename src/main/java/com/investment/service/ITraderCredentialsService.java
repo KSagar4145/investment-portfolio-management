@@ -7,6 +7,6 @@ import com.investment.pojos.TraderCredentials;
 
 public interface ITraderCredentialsService {
 	
-
+	public Long getCredentialsId(String email, String password);
 
 }

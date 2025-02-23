@@ -36,5 +36,12 @@ public class AssetServiceImpl implements IAssetService{
 	    public void deleteAsset(Long assetId) {
 	        assetRepository.deleteById(assetId);
 	    }	
+	    
+	    
+	 // In the AssetService class
+	    public List<Asset> saveAssets(List<Asset> assets) {
+	        return assetRepository.saveAll(assets);  // saveAll() method will save a list of assets in the database
+	    }
+
 
 }
