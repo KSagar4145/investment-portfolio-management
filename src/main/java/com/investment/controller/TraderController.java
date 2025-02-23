@@ -1,8 +1,7 @@
 package com.investment.controller;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,11 +20,14 @@ public class TraderController {
 	@Autowired
 	private ITraderService traderService;
 	
-	@PostMapping("path")
-	public Trader createAndSaveTrader(@RequestBody Trader trader) {
-		System.out.println("TraderController createAndSaveTrader "+trader.toString());
-		return traderService.createAndSaveTrader(trader);
-	}
+	
+	
+//	@PostMapping
+//	public Trader createAndSaveTrader(@RequestBody Trader trader) {
+//		System.out.println("TraderController createAndSaveTrader ");/*trader.toString()*/
+//		System.out.println(trader.toString());
+//		return traderService.createAndSaveTrader(trader);
+//	}
 	
 	
 //	 @PostMapping
@@ -33,6 +35,16 @@ public class TraderController {
 //	        Trader savedTrader = traderService.saveTrader(trader);
 //	        return ResponseEntity.status(HttpStatus.CREATED).body(savedTrader);
 //	    }
+	
+	
+	@PostMapping
+    public ResponseEntity<Trader> addTrader(@RequestBody Trader trader) {
+        Trader savedTrader = traderService.addTrader(trader);
+        return ResponseEntity.ok(savedTrader);
+    }
+	
+	
+	
 	
 
 }
