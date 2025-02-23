@@ -69,13 +69,14 @@ public class Trader{
 	@Column(name = "kyc_verified", nullable = false)
 	private Boolean kycVerified;
 
-		
-	 @OneToOne(cascade = CascadeType.ALL)
-	 @JoinColumn(name = "credentials_id", referencedColumnName = "credentials_id", nullable = false )  
-	 private TraderCredentials credentials;
 
-	
-//    @OneToOne(mappedBy = "trader", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private PortfolioSummary portfolioSummary;
-	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "credentials_id", referencedColumnName = "credentials_id", nullable = false )  
+	private TraderCredentials credentials;
+
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "portfolio_summary_trader_id")
+	private PortfolioSummary portfolioSummary;
+
 }

@@ -7,7 +7,6 @@ import com.investment.pojos.TraderCredentials;
 
 public interface ITraderCredentialsService {
 	
-	public TraderCredentials registerTraderCredentials( TraderCredentials traderCredentials);
 
 
 }
