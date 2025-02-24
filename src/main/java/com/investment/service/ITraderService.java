@@ -9,5 +9,7 @@ public interface ITraderService {
 	//public Trader createAndSaveTrader(Trader trader);
 	
 	public Trader addTrader(Trader trader);
+	
+	public String updateTrader(String email, String password, Trader updatedTrader) ;
 
 }

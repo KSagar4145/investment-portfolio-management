@@ -6,12 +6,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.investment.pojos.Trader;
 import com.investment.pojos.TraderCredentials;
 import com.investment.pojos.TraderCredentials;
 import com.investment.service.ITraderService;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 
 
@@ -29,6 +33,9 @@ public class TraderController {
         Trader savedTrader = traderService.addTrader(trader);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedTrader);
     }
+	
+	
+
 	
 	
 	
