@@ -37,17 +37,15 @@ public class JwtUtil {
 				.setSubject(email)   // Setting subject (email or username)
 				.setHeaderParam("typ", "JWT")  // Setting header type
 				.setIssuedAt(new Date(System.currentTimeMillis())) // Issued time
-				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) // Expiration (1 hour)
+				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 5)) // Expiration (5 min )
 				.signWith(getSignKey(),SignatureAlgorithm.HS256) // Signing with a secure key
 				.compact();
 	}
 
 
 	private Key getSignKey() {
-		System.err.println("Decoding secret key...");
 		byte [] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
 		Key key = Keys.hmacShaKeyFor(keyBytes);
-		System.err.println("Key generated successfully!");
 		System.err.println("Generated Secret Key (Base64) key: " + key);
 		return key;	
 	}

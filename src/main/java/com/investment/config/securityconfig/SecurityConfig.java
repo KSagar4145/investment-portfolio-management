@@ -18,6 +18,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 
 import com.investment.config.securityconfig.jwt.JwtAuthFilter;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 @Configuration
 public class SecurityConfig {
 	
@@ -47,7 +49,6 @@ public class SecurityConfig {
 
 		@Bean
 		SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-			System.err.println(">????????????????????????????");
 			http
 			.authorizeHttpRequests(auth-> auth
 					.requestMatchers("/auth/**").permitAll()  
@@ -55,10 +56,14 @@ public class SecurityConfig {
 					//.anyRequest().denyAll()
 					)
 			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Ensure stateless sessions
-	        .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) // Add JWT filter before UsernamePasswordAuthenticationFilter
-	        .csrf(csrf -> csrf.disable())  ;// Disable CSRF for token-based authentication
+			.authenticationProvider(authenticationProvider()) // <-- ADD THIS!
+			.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) // Add JWT filter before UsernamePasswordAuthenticationFilter
+	        .csrf(csrf -> csrf.disable())  // Disable CSRF for token-based authentication
 	        //.cors(cors -> cors.configurationSource(corsConfigurationSource()));  //CORS (Cross-Origin Resource Sharing) 
-
+	        .exceptionHandling(exception -> exception
+	                .authenticationEntryPoint((request, response, authException) -> {
+	                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+	                }));
 			return http.build();//SecurityFilterChain is interface
 		}
 
@@ -70,14 +75,13 @@ public class SecurityConfig {
 		AuthenticationProvider authenticationProvider() {
 			DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
 			authenticationProvider.setUserDetailsService(userDetailsService());
-			//authenticationProvider.setPasswordEncoder(passwordEncoder());
+			authenticationProvider.setPasswordEncoder(passwordEncoder());
 			return authenticationProvider;
 		}
 		
 		
 		@Bean
 		UserDetailsService userDetailsService() {
-			System.err.println("Authentication userDetailsService!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ");
 			return new CustomUserDetailsService();
 		}
 		
