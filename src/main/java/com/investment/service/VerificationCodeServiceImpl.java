@@ -3,6 +3,7 @@ package com.investment.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.investment.pojos.User;
 import com.investment.pojos.VerificationCode;
@@ -10,6 +11,7 @@ import com.investment.pojos.enums.VerificationType;
 import com.investment.repository.VerificationCodeRepository;
 import com.investment.utils.OtpUtils;
 
+@Service
 public class VerificationCodeServiceImpl implements VerificationCodeService{
 
 	@Autowired
